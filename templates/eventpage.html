@@ -1,0 +1,38 @@
+{% extends 'super.html' %} {%block content%}
+<div>
+  <h2>{{event.name}}</h2>
+  <p>{{event.description}}</p>
+  <div>
+    {% if registered %}
+    <p>you are already registered </p>
+    {%else%}
+    <a href="{%url 'register_confirm' event.id%}"> Register </a>
+    {%endif%}
+    {%if submitted%}
+    youve already submitted for this project
+    {%elif submit_if_registered%}
+    <p>youve to register before submitting a project</p>
+    {%else%}
+    <a href="{%url 'submit-project' event.id %}"> Submit Project   </a>
+    {%endif%}
+    {% for sub in event.submission_set.all%}
+    <a href="{%url 'update-form' sub.id%}">update submitted project</a>
+    <div>
+      <!-- <p>{{event.description}}</p> -->
+    </div>
+    {%endfor%}
+  </div>
+  <div>
+    <h3>participants</h3>
+    <div>
+      <!-- getting all the users in the events  -->
+      {%for user in event.participants.all %}
+      <a href="{%url 'user-profile' user.id %}">
+        <p>{{user.name}}</p>
+      </a>
+      {%endfor%}
+    </div>
+  </div>
+</div>
+
+{%endblock content%}

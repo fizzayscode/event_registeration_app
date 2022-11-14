@@ -1,0 +1,10 @@
+{% extends 'super.html' %} {%block content%}
+<div>
+  <h2>submit project for {{event.name}}</h2>
+  <form method="POST">
+    {%csrf_token%} {{form.as_p}}
+    <button>submit</button>
+  </form>
+</div>
+{%endblock content%}
+ 

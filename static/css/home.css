@@ -1,0 +1,44 @@
+
+.events--lists{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2em;
+
+}
+
+.wrapper--event{
+    border: 1px;
+    border-color: gray;
+    border-style: solid;
+    padding: 1em;
+    text-decoration: none;
+}
+.wrapper--event a{
+    text-decoration: none;
+}
+
+@media(max-width:1200) {
+    .container--main{
+        width: 100%;
+    }
+    
+}
+
+.users--lists{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    
+}
+.user--avatar{
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.users{
+    border: 1px solid gray;
+    height: 170px;
+    
+}

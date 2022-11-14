@@ -1,0 +1,12 @@
+{% extends 'super.html' %}
+{%block content%}
+<div>
+    <form method="POST">
+        <!-- always use csrf toaken for post request -->
+        {% csrf_token %}
+        <!-- passed in event in my context so it had take me back to my event page -->
+        <a href="{%url 'event_page' event.id %}">Go Back</a>
+        <input type="submit" value="Confirm">
+    </form>
+</div>
+{%endblock content%}

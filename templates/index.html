@@ -1,0 +1,32 @@
+{% extends 'super.html'%} {% block content %}
+<section class="container--events">
+  <h3>EVENTS</h3>
+  <div class="events--lists">
+    {%for event in events%}
+    <!-- you have to use the name you gave the path in your urls.py  -->
+    <a href="{%url 'event_page' event.id%}">
+      <div class="wrapper--event">
+        <h3>{{event.name}}</h3>
+        <small><p>{{event.start_date}}</p></small>
+        <small><p>participants : {{event.participants.count}} registered</p> </small>
+        <small><p>Registeration deadline:{{event.reg_deadline}}</p></small> 
+        <small>end date :{{event.end_date}}</small>
+      </div>
+    </a>
+    {%endfor%}
+  </div>
+</section>
+<section>
+  <h3>Participants</h3>
+  <div class="users--lists">
+    {%for user in users%}
+    <a href="{%url 'user-profile' user.id%}">
+      <div class="users">
+        <img class="user--avatar" src="{{user.avatar.url}}" alt="my image">
+        <h4>{{user.name}}</h4>
+      </div>
+    </a>
+    {%endfor%}
+  </div>
+</section>
+{% endblock %}

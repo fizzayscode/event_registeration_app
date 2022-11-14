@@ -1,0 +1,15 @@
+.nav--container{
+    display: flex;
+    justify-content: space-between;
+    height: 65px;
+    background-color: lightblue;
+    margin-bottom: 12px;
+    align-items: center;
+}
+
+.nav--container a{
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    margin: 6px;
+}
