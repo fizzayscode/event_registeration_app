@@ -128,7 +128,7 @@ STATIC_URL = 'static/'
 #  LOAD IT CAUSE ALL PICTURES ARE UPLOADED SOMEHWERE 
 MEDIA_URL ='/images/'
 
-# where to find my css files 
+# where to find my css files        
 STATICFILES_DIRS=[
     BASE_DIR / 'static' 
 ]
@@ -136,7 +136,7 @@ STATICFILES_DIRS=[
 # TELLS DJANGO WHERE TO UPLOAD USER CONTENT STUFF ANYTIME WE UPLAOD A CONTENT
 #  THROUGH THE IMAGE FIELdS ADD THE CONTENT TO this IMAGES FOLDER
 
-MEDIA_ROOT=BASE_DIR/ 'static'
+MEDIA_ROOT=BASE_DIR/ 'static/images'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

@@ -77,6 +77,8 @@ def event_page(request, id):
     registered=False
     submitted=False
     submit_if_registered=False
+    
+    submit_id=Submission.objects.filter(event=event)
 
 
     if request.user.is_authenticated:
@@ -95,7 +97,8 @@ def event_page(request, id):
         'event':event,
         'registered':registered,
         'submitted':submitted,
-        'submit_if_registered':submit_if_registered
+        'submit_if_registered':submit_if_registered,
+        'submit_id':submit_id
     }
     return render(request,'eventpage.html',context)
 

@@ -1,8 +1,9 @@
 {% extends 'super.html' %} {%block content%}
-<div>
+<div class="section">
   <h2>My Account</h2>
-  <div>
+  <div class="section">
     {%for event in user.events.all%}
+    <h3>My Events</h3>
       <a href="{%url 'event_page' event.id%}">
         <h4>{{event.name}}</h4>
       </a>
@@ -10,8 +11,8 @@
   </div>
 </div>
 
-<div>
-    <h2>My submitted Projects</h2>
+<div class="section">
+    <h3>My submitted Projects</h3>
     <div>
       {%for sub in user.submission_set.all%}
         <a href="{%url 'update-form' sub.id%}">

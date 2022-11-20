@@ -4,13 +4,16 @@
       <a href="{%url 'index'%}">Home</a>
       <!-- theres a method is_authenticated that helps us check if the user is actually logged in  
      i can access the user using request.user.isauthemticated rather than passing it through the context-->
+     {%if user.is_authenticated%}
      <a href="{%url 'account-page'%}">Account</a>
+     {%endif%}
+
    </div>
     <div>
     {%if user.is_authenticated%}
-    <a href="{% url 'logout'%}">logout</a>
+    <a class="mylogout" href="{% url 'logout'%}">logout</a>
     {%else%}
-    <a href="{% url 'login' %}">login</a>
+    <a class="mylogin" href="{% url 'login' %}">login</a>
     {%endif%}
    </div>
  </div>

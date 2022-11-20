@@ -5,11 +5,41 @@
     background-color: lightblue;
     margin-bottom: 12px;
     align-items: center;
+    padding: 1em;
+    width: 100%;
 }
 
 .nav--container a{
-    text-decoration: none;
     color: black;
+    font-weight: bold;
     font-size: 20px;
-    margin: 6px;
+    margin: 12px;
+    text-decoration: none;
 }
+
+.mylogout{
+    padding: 10px 28px;
+    border-radius: 5px;
+    background-color: rgb(179, 172, 172);
+    color: white;
+    border: none;
+    text-decoration: none;
+}
+
+.mylogin{
+    padding: 10px 28px;
+    border-radius: 5px;
+    background-color: rgb(238, 210, 8);
+    color: white;
+    border: none;
+    text-decoration: none;
+}
+
+
+
+/* .nav--container a{
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 12px;
+} */

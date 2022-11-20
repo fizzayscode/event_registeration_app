@@ -4,6 +4,10 @@ from enum import unique
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
+# i dont want my id generate from one it can easy be tracked and guessed by other users i want uuid
+# to override the default id django thats starts from 1
+import uuid
+
 # Create your models here.
 ##one to one relationship between the user and the profile connect the two with django signals 
 
@@ -11,14 +15,13 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
     #setting the null attribute to true because i already have a user in my db
     name= models.CharField(max_length=100,null=True)
-
-
     # email overriding from the parent class
     email= models.EmailField(unique=True,null=True)
     bio= models.TextField(null=True,blank=True)
     is_participant=models.BooleanField(default=True, null=True)
-
     avatar=models.ImageField(default='profile.png')
+    # uuid4 is a random creator of hex values
+    id=models.UUIDField(default=uuid.uuid4,unique=True,primary_key=True,editable=False)
 
     # tell django use the email field as the username, i want user to log in with email instead of username 
     USERNAME_FIELD= 'email'
@@ -44,6 +47,7 @@ class Event(models.Model):
 
     # auto_now_add take the timestamp when the event was first created 
     created=models.DateTimeField(auto_now_add=True)
+    id= models.UUIDField(default=uuid.uuid4,unique=True,primary_key=True,editable=False)
 
 
     def __str__(self):
@@ -55,8 +59,9 @@ class Submission(models.Model):
     #  we still want a record for that submission
     # says hey the submissin is still here but doesnt have a parent 
     participant=models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    event= models.ForeignKey(Event,on_delete=models.SET_NULL, null=True)
+    event= models.ForeignKey(Event,on_delete=models.SET_NULL, null=True )
     description=models.TextField(null=True, blank=True)
+    id= models.UUIDField(default=uuid.uuid4,unique=True,primary_key=True,editable=False)
 
     def __str__(self):
         # we want it to be a string value  so we will get the paricipant thats the user and the event

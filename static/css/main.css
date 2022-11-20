@@ -8,4 +8,45 @@
 .main--container{
     margin: 0 auto;
     max-width: 1200px;
+    padding: 0 1em;
 }
+
+.register{
+    background-color: rgb(179, 172, 172) ;
+    padding: 10px 28px;
+    border-radius: 5px;
+    margin: 10px 0px;
+    display: block;
+    font-weight: bold;
+    width: fit-content;
+    text-decoration:none;
+    color: black;
+
+}
+
+.reg-sub--wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 12px;
+
+}
+.section{
+    margin: 2em 0;
+}
+
+.text--success{
+    color: #198754;
+    font-size: 20px;
+    display: block;
+    margin-bottom: 6px;
+}
+
+
+
+
+
+
+
+
+

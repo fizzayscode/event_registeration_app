@@ -11,10 +11,10 @@ urlpatterns = [
     path('accounts/login/',views.login_page,name='login'),
     path('accounts/logout/',views.logout_page,name='logout'),
     path('accounts/register', views.register_page, name='register'),
-    path('events/<int:id>/', views.event_page, name="event_page"),
-    path('register_confirm/<int:id>/', views.register_confirm, name="register_confirm"),
-    path('user-profile/<int:id>',views.profile_page,name='user-profile'),
+    path('events/<str:id>/', views.event_page, name="event_page"),
+    path('register_confirm/<str:id>/', views.register_confirm, name="register_confirm"),
+    path('user-profile/<str:id>',views.profile_page,name='user-profile'),
     path('user-account/',views.account_page,name='account-page'),
-    path('submit-project/<int:id>/', views.submit_form, name='submit-project'),
-    path('update-project/<int:id>/', views.update_form, name='update-form')
+    path('submit-project/<str:id>/', views.submit_form, name='submit-project'),
+    path('update-project/<str:id>/', views.update_form, name='update-form')
 ]
