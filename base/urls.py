@@ -16,5 +16,6 @@ urlpatterns = [
     path('user-profile/<str:id>',views.profile_page,name='user-profile'),
     path('user-account/',views.account_page,name='account-page'),
     path('submit-project/<str:id>/', views.submit_form, name='submit-project'),
-    path('update-project/<str:id>/', views.update_form, name='update-form')
+    path('update-project/<str:id>/', views.update_form, name='update-form'),
+    path('edit-profile/', views.edit_profile, name='edit-profile')
 ]

@@ -8,8 +8,10 @@
       <div class="wrapper--event">
         <h3>{{event.name}}</h3>
         <small><p>{{event.start_date}}</p></small>
-        <small><p>participants : {{event.participants.count}} registered</p> </small>
-        <small><p>Registeration deadline:{{event.reg_deadline}}</p></small> 
+        <small
+          ><p>participants : {{event.participants.count}} registered</p>
+        </small>
+        <small><p>Registeration deadline:{{event.reg_deadline}}</p></small>
         <small>end date :{{event.end_date}}</small>
       </div>
     </a>
@@ -21,8 +23,11 @@
     {%for user in users%}
     <a href="{%url 'user-profile' user.id%}">
       <div class="users">
-        <img class="user--avatar" src="{{user.avatar.url}}" alt="my image">
-        <h4>{{user.name}}</h4>
+        <div>
+          <img class="user--avatar" src="{{user.avatar.url}}" alt="my image" />
+          <h4>{{user.name}}</h4>
+          <small>{{user.bio| truncatewords:15}}</small>
+        </div>
       </div>
     </a>
     {%endfor%}

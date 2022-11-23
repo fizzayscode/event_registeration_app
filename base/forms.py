@@ -15,5 +15,10 @@ class SubmissionForm(ModelForm):
 class CustomUserCreation(UserCreationForm):
     class Meta:
         model=User
+        fields = ("username","email","name","password1", "password2")
 
-        fields= fields = ("username","email","name","password1", "password2")
+
+class UserForm(ModelForm):
+    class Meta:
+        model= User
+        fields=["username","bio","avatar", "email"]

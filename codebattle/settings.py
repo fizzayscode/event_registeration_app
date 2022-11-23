@@ -135,8 +135,7 @@ STATICFILES_DIRS=[
 
 # TELLS DJANGO WHERE TO UPLOAD USER CONTENT STUFF ANYTIME WE UPLAOD A CONTENT
 #  THROUGH THE IMAGE FIELdS ADD THE CONTENT TO this IMAGES FOLDER
-
-MEDIA_ROOT=BASE_DIR/ 'static/images'
+MEDIA_ROOT=BASE_DIR / 'static/images'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

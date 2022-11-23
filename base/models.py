@@ -20,6 +20,9 @@ class User(AbstractUser):
     bio= models.TextField(null=True,blank=True)
     is_participant=models.BooleanField(default=True, null=True)
     avatar=models.ImageField(default='profile.png')
+
+    # for resizing a picture maybe you dont want to uplaod a heavy picture in your s3 bucket
+    # avatar=models.ResizedImageField(size=[10,10],default='profile.png')
     # uuid4 is a random creator of hex values
     id=models.UUIDField(default=uuid.uuid4,unique=True,primary_key=True,editable=False)
 

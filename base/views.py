@@ -5,9 +5,13 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
-from .forms import SubmissionForm,CustomUserCreation
+from .forms import SubmissionForm,CustomUserCreation,UserForm
 from .models import User,Event,Submission
 from django.contrib.auth import login,logout, authenticate
+from PIL import Image
+from io import StringIO 
+# from cStringIO import StringIO
+# import Image
 
 
 
@@ -78,7 +82,7 @@ def event_page(request, id):
     submitted=False
     submit_if_registered=False
     
-    submit_id=Submission.objects.filter(event=event)
+    submit_id=Submission.objects.filter(participant=request.user,event=event)
 
 
     if request.user.is_authenticated:
@@ -129,6 +133,31 @@ def account_page(request):
     # getting the user from the session thats if he is logged in
     user=request.user
     return render(request,'account.html')
+
+
+@login_required(login_url='login')
+def edit_profile(request):
+    user=request.user
+    form= UserForm(instance=user)
+    if request.method=='POST':
+        # img=Image.open(request.FILES.get('avatar'))
+        # newSize=(10,10)
+        # img=img.resize(newSize)
+        # request.FILES['avatar']=img
+        # we have to pass in the files into the form also fo it parses it with the data 
+        print("my file", request.FILES.get('avatar'))
+        form =UserForm(request.POST,request.FILES,instance=user)
+
+
+        if form.is_valid():
+            form.save()
+            return redirect('account-page')
+
+
+    context={'form':form, 'user':user}
+    return render(request, "edit-profile.html",context)
+
+
 
 @login_required(login_url='login')
 def submit_form(request,id):

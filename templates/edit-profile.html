@@ -1,0 +1,15 @@
+{% extends 'super.html'%} {% block content %}
+
+
+    <h2 class="section">EDIT PROFILE</h2>
+    <div>
+        <!-- enctype is telling the form we are going to collect a file from the user uploaded file
+        so process it  -->
+    <form method="POST" enctype="multipart/form-data">
+        {%csrf_token%}
+        {{form.as_p}}
+    <input class="mylogout" type="submit" value="update">
+    </form>
+</div>
+
+{% endblock content %}

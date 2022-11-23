@@ -12,6 +12,7 @@
     border-style: solid;
     padding: 1em;
     text-decoration: none;
+    
 }
 .wrapper--event a{
     text-decoration: none;
@@ -26,7 +27,7 @@
 
 .users--lists{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     gap: 20px;
     
 }
@@ -38,13 +39,11 @@
 }
 
 .users{
-    border: 1px solid gray;
     height: 170px;
-    
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.text--success{
-    color: green;
-    font-size: 16px;
-}
+
 
