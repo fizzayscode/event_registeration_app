@@ -8,8 +8,10 @@ from django.contrib.auth.decorators import login_required
 from .forms import SubmissionForm,CustomUserCreation,UserForm
 from .models import User,Event,Submission
 from django.contrib.auth import login,logout, authenticate
+from django.core.paginator import Paginator,PageNotAnInteger, EmptyPage
 from PIL import Image
 from io import StringIO 
+from django.contrib import messages
 # from cStringIO import StringIO
 # import Image
 
@@ -32,9 +34,9 @@ def login_page(request):
             # till the user logs out
             login(request, user)
             return redirect('index')
-
         else:
-            return HttpResponse("User with this credentials was not found")
+            messages.error(request,"invalid username or password")
+            return redirect("login")
 
 
     context={'page':page}
@@ -70,8 +72,22 @@ def index(request):
     #  rendered i dont to the admin to participate just only the users 
     users=User.objects.filter(is_participant=True)
     events=Event.objects.all()
+    p = Paginator(users, 3)
+    page_number = request.GET.get('page')
+    try:
+        page_obj = p.get_page(page_number)  # returns the desired page object
+    except PageNotAnInteger:
+        # if page_number is not an integer then assign the first page
+        page_obj = p.page(1)
+    except EmptyPage:
+        # if page is empty then return last page
+        page_obj = p.page(p.num_pages)
+
+    pages_list=[ i for i in range(1 , p.num_pages+1)]
+    # print(pages_list)
+    
     context={'users':users,
-              'events':events}
+              'events':events, 'pages':page_obj, 'pages_list': pages_list}
     return render(request,'index.html', context)
 
 
@@ -134,6 +150,22 @@ def account_page(request):
     user=request.user
     return render(request,'account.html')
 
+
+def password_change(request):
+    if request.method=='POST':
+        password1=request.POST['password1']
+        password2=request.POST['password2']
+
+        if password1==password2:
+            print(password1)
+            request.user.set_password(password1)
+            print(password1)
+
+            request.user.save()
+
+            return redirect('account-page')
+
+    return render(request, "password-change.html")
 
 @login_required(login_url='login')
 def edit_profile(request):

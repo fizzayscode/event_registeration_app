@@ -5,7 +5,7 @@
   <img class="user--avatar" src="{{user.avatar.url}}" >
   <div class="section">
     <a class="mylogin" href="{%url 'edit-profile'%}">edit profile</a>
-    <a class="mylogin" href="#">change password</a>
+    <a class="mylogin" href="{%url 'password-change'%}">change password</a>
     <a class="mylogin" href="{%url 'user-profile' request.user.id%}">view profile</a>
   </div>
 

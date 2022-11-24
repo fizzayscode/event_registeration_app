@@ -20,7 +20,7 @@
 </section>
 <section>
   <div class="users--lists section">
-    {%for user in users%}
+    {%for user in pages.object_list%}
     <a href="{%url 'user-profile' user.id%}">
       <div class="users">
         <div>
@@ -31,6 +31,11 @@
       </div>
     </a>
     {%endfor%}
+  </div>
+  <div>
+    {% for i in pages_list%}
+    <a href="?page={{i}}">{{i}}</a>
+    {%endfor %}
   </div>
 </section>
 {% endblock %}

@@ -1,4 +1,22 @@
 
+.login--register--container{
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid gray;
+    padding: 12px;
+   
+
+
+}
+.login--register--container input{
+    display: block;
+    margin: 8px;
+    padding:5px;
+    width: 100%;
+    font-size: 15px;
+}
+
+
 .events--lists{
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -43,6 +61,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+
+.login--form input {
+    display: block;
 }
 
 

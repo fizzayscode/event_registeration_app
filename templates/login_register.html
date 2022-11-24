@@ -1,24 +1,38 @@
-{% extends 'super.html' %}
-{%block content%}
+{% extends 'super.html' %} {%block content%} {%if page == 'login'%}
 
-{%if page == 'login'%}
-<h2>login User</h2>
-<form action="{% url 'login'%}" method="POST">
+<div class="login--register--container">
+  <h2>login User</h2>
+  <br />
+  <form action="{% url 'login'%}" method="POST">
     {%csrf_token%}
-<input type="email" name="email" >
-<input type="password" name="password">
-<input type="submit" name="submit">
-</form>
-<p>dont have an account?</p><a href="{%url 'register'%}">register</a>
+    <label> EMAIL</label>
+    <input type="email" name="email" />
+    <label> PASSWORD</label>
+    <input type="password" name="password" />
+    <input
+      class="mylogout"
+      style="width: fit-content"
+      type="submit"
+      name="submit"
+    />
+  </form>
+  <p>dont have an account?</p>
+  <a href="{%url 'register'%}">register</a>
+</div>
+
 {%else%}
-<h2>register User</h2>
-<form action="{%url 'register' %}" method='POST'>
-    {%csrf_token%} 
-     {{form.as_p}}
-     <button>submit</button>
-    </form>
+<div class="login--register--container">
+  <h2>register User</h2>
+  <br>
+  <form action="{%url 'register' %}" method="POST">
+    {%csrf_token%} {%for field in form%}
+    <label>{{field.label}} :</label>
 
-<p>already have an account? <a href="{% url 'login'%}">Login </a></p>
-{%endif%}
+    {{field}} {%endfor%}
+    <button class="mylogout">submit</button>
+  </form>
 
-{%endblock content%}
+  <p>already have an account? <a href="{% url 'login'%}">Login </a></p>
+</div>
+
+{%endif%} {%endblock content%}
