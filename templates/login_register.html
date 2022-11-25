@@ -25,10 +25,12 @@
   <h2>register User</h2>
   <br>
   <form action="{%url 'register' %}" method="POST">
-    {%csrf_token%} {%for field in form%}
+    {%csrf_token%} 
+    {%for field in form%}
     <label>{{field.label}} :</label>
-
-    {{field}} {%endfor%}
+    {{field}}
+    <p>{{field.errors}}</p>   
+     {%endfor%}
     <button class="mylogout">submit</button>
   </form>
 

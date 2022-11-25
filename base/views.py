@@ -33,6 +33,7 @@ def login_page(request):
             # if its not none then django helps us beautifully witht the login and creates the session for us 
             # till the user logs out
             login(request, user)
+            messages.success(request,"you have successfully signed in")
             return redirect('index')
         else:
             messages.error(request,"invalid username or password")
@@ -63,6 +64,7 @@ def register_page(request):
 
 
 def logout_page(request):
+    messages.success(request,"you have successfully logged out")
     logout(request)
     return redirect('login')
 
@@ -133,6 +135,7 @@ def register_confirm(request, id):
         # because youve to be logged in so its getting it from the session
         event.participants.add(request.user)
         # passing dynamic values to take me back to the event page with that id 
+        messages.success(request, f"you have successfully registered for the {event}")
         return redirect('event_page',id=event.id)
     context={'event':event}
     return render(request,'event_confirm.html', context)
@@ -162,8 +165,10 @@ def password_change(request):
             print(password1)
 
             request.user.save()
-
+            messages.success(request,"password changed successfully")
             return redirect('account-page')
+        else:
+            messages.error(request,"the passwords dont match")
 
     return render(request, "password-change.html")
 
@@ -177,14 +182,16 @@ def edit_profile(request):
         # img=img.resize(newSize)
         # request.FILES['avatar']=img
         # we have to pass in the files into the form also fo it parses it with the data 
-        print("my file", request.FILES.get('avatar'))
+        # print("my file", request.FILES.get('avatar'))
         form =UserForm(request.POST,request.FILES,instance=user)
 
 
         if form.is_valid():
             form.save()
+            messages.success(request,"account updated successfully")
             return redirect('account-page')
 
+            
 
     context={'form':form, 'user':user}
     return render(request, "edit-profile.html",context)
@@ -210,6 +217,7 @@ def submit_form(request,id):
             f.participant=user
             f.event=event
             f.save()
+            messages.success(request,"project submitted successsfully")
 
             return redirect('account-page')
 

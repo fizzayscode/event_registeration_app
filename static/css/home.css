@@ -68,5 +68,20 @@
     display: block;
 }
 
+.success{
+    color: rgb(13, 185, 13);
+}
+
+.error{
+    color: red;
+    text-align: center;
+    padding: 6px;
+}
+
+.errorlist{
+    color: red;
+    list-style: none;
+    font-size: 14px;
+}
 
 

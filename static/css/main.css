@@ -40,12 +40,16 @@
     font-size: 20px;
     margin-bottom: 6px;
 }
+.success{
+    color: rgb(13, 185, 13);
+}
 
 .error{
     color: red;
-    margin: 0 auto;
+    text-align: center;
     padding: 6px;
 }
+
 
 
 
